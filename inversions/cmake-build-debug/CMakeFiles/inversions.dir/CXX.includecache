@@ -6,15 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/maksimbarkalov/Documents/C_Projects/CppAppTest/main.cpp
+/Users/maksimbarkalov/Documents/C_Projects/ASD/inversions/main.cpp
 iostream
--
-fstream
--
-map
 -
 vector
 -
 algorithm
+-
+fstream
 -
 
