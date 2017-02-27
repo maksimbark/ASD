@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/maksimbarkalov/Documents/C_Projects/CppAppTest/main.cpp
+iostream
+-
+fstream
+-
+map
+-
+vector
+-
+algorithm
+-
+
