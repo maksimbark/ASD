@@ -1,90 +1,80 @@
-#include <iostream>
+#include <stdio.h>
 #include <vector>
-#include <algorithm>
-#include <fstream>
+#include <cstdlib>
+
 using namespace std;
-vector<int> arr;
+
+int hsort(vector<int>& array, int a, int b) {
+    if (a == b) {
+        return a;
+    }
 
 
-void msort(int a, int b) {
+    int cumid = array[b];
 
-    if ((b-a) > 1) {
+    int i = a-1;
+    int j = b;
 
-
-        msort(a, ((a + b) / 2));
-        msort(((a + b) / 2), b);
-
-        vector<int> left;
-        vector<int> right;
-        vector<int> answ;
-/*
-        for (int i = 0; i < (a+b)/2; i++) {
-            left.push_back(arr[i]);
+    while (1) {
+        while (array[++i]<cumid) {
         }
-        for (int i = (a+b)/2; i < b; i++) {
-            right.push_back(arr[i]);
+        while (array[--j]>cumid) {
         }
-*/
-        int coLeft = 0;
-        int coRight = 0;
-        //int k = a;
-        int mid = ((a + b) / 2);
+        if (i < j) {
+            //swap(array[i], array[j]);
+int temp = array[i];
+            array[i] = array[j];
+            array[j]=temp;
+        } else break;
+    }
+    int temp = array[i];
+    array[i] = array[b];
+    array[b]=temp;
+    return i;
 
+}
 
-        while ((a + coLeft < mid) && (mid + coRight < b)) {
-
-            if (arr[a + coLeft] < arr[mid + coRight]) {
-                answ.push_back(arr[a + coLeft]);
-                coLeft++;
-            } else {
-                answ.push_back(arr[mid + coRight]);
-                coRight++;
-            }
+int testing(vector<int>& array, int a, int b, int k) {
+    while (1) {
+        int mid = hsort(array, a, b);
+        if (mid == k) {
+            return array[mid];
+        } else if (mid < k) {
+            a = mid + 1;
+        } else {
+            b = mid - 1;
         }
-
-        while (a + coLeft < mid) {
-            answ.push_back(arr[a + coLeft]);
-            coLeft++;
-        }
-        while (mid + coRight < b) {
-            answ.push_back(arr[mid + coRight]);
-            coRight++;
-        }
-        for (int i = 0; i < (coLeft + coRight); i++) {
-            arr[a + i] = answ[i];
-        }
-
-        //for (int i = 0; i < answ.size()-1; i++) {
-        //          arr[a+i] = answ[i];
-
-        //}
-
-
-
     }
 
 }
 
-
-int main()
-{
-ifstream cin("kth.in");
-ofstream cout("kth.out");
-    int n, k, a,b,c;
-    cin >> n >> k >> a >> b >> c;
-    //vector<int> arr(n);
-    int f, s;
-    cin >> f >> s;
-    arr.push_back(f);
-    arr.push_back(s);
-
+int main() {
+    FILE* f;
+    f=fopen("kth.in","r");
+    vector<int> array;
+    int n, k, A, B, C;
+    int curr;
+    fscanf (f, "%d %d", &n, &k);
+    fscanf (f, "%d %d %d", &A, &B, &C);
+    fscanf (f, "%d", &curr);
+    array.push_back(curr);
+    fscanf (f, "%d", &curr);
+    array.push_back(curr);
+    fclose(f);
     for (int i = 2; i < n; i++) {
-        arr.push_back((a*arr[i-2]+b*arr[i-1]+c));
+        array.push_back(A*array[i-2]+B*array[i-1]+C);
     }
 
-    msort(0, arr.size());
+    vector<int>& link = array;
 
-    cout << arr[k-1];
+    f=fopen("kth.out","w");
+    fprintf(f, "%d",  testing(link, 0, array.size()-1, k-1));
+
+    /* for (int i = 0; i < n; i++) {
+     fprintf(f, "%d ", array[i]);
+    }*/
+
+    fclose(f);
 
     return 0;
 }
