@@ -53,6 +53,7 @@ void msort(int a, int b) {
         for (int i = 0; i < (coLeft + coRight); i++) {
             arr[a + i] = answ[i];
         }
+        cout << a+1 << " " << b << " " << arr[a] << " " << arr[b-1] << endl;
 
     //for (int i = 0; i < answ.size()-1; i++) {
       //          arr[a+i] = answ[i];
@@ -66,13 +67,18 @@ void msort(int a, int b) {
 }
 
 int main() {
-for (int i = 10; i > 0; i--) {
-    arr.push_back(i);
+    ifstream cin("input.txt");
+    freopen("output.txt", "w", stdout);
+    int n, curr;
+    cin >> n;
+for (int i = 0; i < n; i++) {
+    cin >> curr;
+    arr.push_back(curr);
 }
 
   msort(0, arr.size());
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < arr.size(); i++) {
         cout << (arr[i]) << " ";
     }
 
