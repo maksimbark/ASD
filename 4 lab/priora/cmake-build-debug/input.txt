@@ -1,0 +1,5 @@
+push 3
+push 2
+extract-min
+decreasw 1 1
+ex
