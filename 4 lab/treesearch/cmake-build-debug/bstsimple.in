@@ -1,0 +1,6 @@
+insert 24
+insert 12
+insert -229
+delete 12
+delete -229
+exists -229
