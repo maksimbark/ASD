@@ -22,9 +22,10 @@ void search(int curr) {
     listik* temp = graph[curr]->cat;
     while (temp) {
         if (graph[temp->kuda]->color == "white") {
+            //graph[temp->kuda]->color = "grey";
             bfs.push(temp->kuda);
             temp = temp->next;
-        }
+        } else break;
     }
     graph[curr]->color = "black";
     answer[curr] = qcount;
