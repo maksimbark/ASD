@@ -52,9 +52,7 @@ int main() {
 
     for (int i = 0; i < count; i++) {
         fin >> from >> where;
-        if (from > where) {
-            swap (from, where);
-        }
+
         if (!graph[from]->cat) {
             listik *add = new(listik);
             add->kuda = where;
@@ -70,6 +68,23 @@ int main() {
             add->next = NULL;
             temp->next = add;
         }
+
+        if (!graph[where]->cat) {
+            listik *add = new(listik);
+            add->kuda = from;
+            add->next = NULL;
+            graph[where]->cat = add;
+        } else {
+            listik *temp = graph[where]->cat;
+            while (temp->next) {
+                temp = temp->next;
+            }
+            listik *add = new(listik);
+            add->kuda = from;
+            add->next = NULL;
+            temp->next = add;
+        }
+
     }
 
     fout << 0 << " ";
