@@ -6,19 +6,24 @@ struct point {
     int x, y;
 } S;
 
-int n, m;
+int n, m, num;
+string way;
+bool found = false;
+
 vector<vector<char>> symbols(100, vector<char>(100));
 vector<vector<bool>> checked(100, vector<bool>(100));
 
 queue<pair<int, int>> bfs;
 queue<int> paths;
 queue<string> ways;
+
 void search(pair<int, int> curr) {
     checked[bfs.front().first][bfs.front().second] = true;
     if (symbols[bfs.front().first][bfs.front().second] == 'T') {
-        cout << "T was found" << endl << bfs.front().first << " " << bfs.front().second << endl << "Path took " << paths.front()
-             << " meters " << endl;
-        cout << "Best way is " << ways.front();
+        num = paths.front();
+        way = ways.front();
+        found = true;
+        return;
     } else {
         if (bfs.front().first - 1 >= 0 && symbols[bfs.front().first - 1][bfs.front().second] != '#' &&
             !checked[bfs.front().first - 1][bfs.front().second]) {
@@ -26,7 +31,7 @@ void search(pair<int, int> curr) {
             temp.first = bfs.front().first - 1;
             temp.second = bfs.front().second;
             bfs.push(temp);
-            paths.push(paths.front()+1);
+            paths.push(paths.front() + 1);
             ways.push(ways.front() + 'U');
         }
         if (bfs.front().first + 1 < n && symbols[bfs.front().first + 1][bfs.front().second] != '#' &&
@@ -35,7 +40,7 @@ void search(pair<int, int> curr) {
             temp.first = bfs.front().first + 1;
             temp.second = bfs.front().second;
             bfs.push(temp);
-            paths.push(paths.front()+1);
+            paths.push(paths.front() + 1);
             ways.push(ways.front() + 'D');
         }
         if (bfs.front().second - 1 >= 0 && symbols[bfs.front().first][bfs.front().second - 1] != '#' &&
@@ -44,7 +49,7 @@ void search(pair<int, int> curr) {
             temp.first = bfs.front().first;
             temp.second = bfs.front().second - 1;
             bfs.push(temp);
-            paths.push(paths.front()+1);
+            paths.push(paths.front() + 1);
             ways.push(ways.front() + 'L');
         }
         if (bfs.front().second + 1 < m && symbols[bfs.front().first][bfs.front().second + 1] != '#' &&
@@ -53,7 +58,7 @@ void search(pair<int, int> curr) {
             temp.first = bfs.front().first;
             temp.second = bfs.front().second + 1;
             bfs.push(temp);
-            paths.push(paths.front()+1);
+            paths.push(paths.front() + 1);
             ways.push(ways.front() + 'R');
         }
     }
@@ -84,12 +89,21 @@ int main() {
     }
 
     pair<int, int> temp;
+
     temp.first = S.x;
     temp.second = S.y;
+
     paths.push(0);
     ways.push("");
     bfs.push(temp);
+
     search(temp);
+
+    if (found) {
+        fout << num << endl << way;
+    } else {
+        fout << -1;
+    }
 
     return 0;
 }
