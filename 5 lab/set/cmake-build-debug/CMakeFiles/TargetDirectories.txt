@@ -1,3 +1,3 @@
-/Users/maksimbarkalov/Documents/C_Projects/ASD/5 lab/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/maksimbarkalov/Documents/C_Projects/ASD/5 lab/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/maksimbarkalov/Documents/C_Projects/ASD/5 lab/cmake-build-debug/CMakeFiles/5_lab.dir
+/Users/maksimbarkalov/Documents/C_Projects/ASD/5 lab/set/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/maksimbarkalov/Documents/C_Projects/ASD/5 lab/set/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maksimbarkalov/Documents/C_Projects/ASD/5 lab/set/cmake-build-debug/CMakeFiles/5_lab.dir
