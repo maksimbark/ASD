@@ -9,29 +9,26 @@ vector<graph *> myGraph(100001);
 vector<char> colors(100001);
 vector<int> answer;
 bool ruse = false;
-int crutch = -1;
 
 void search(int gde) {
     if (colors[gde] == 'w') {
         colors[gde] = 'g';
         graph *temp = myGraph[gde];
         while (temp) {
-            if (colors[temp->kuda] == 'w') search(temp->kuda); else if (colors[temp->kuda] == 'g') {
+            if (colors[temp->kuda] == 'w') search(temp->kuda);
+            else if (colors[temp->kuda] == 'g') {
                 ruse = true;
-                crutch = temp->kuda;
-                break;
             }
             temp = temp->next;
         }
-        if (ruse) answer.push_back(gde);
-        if (gde == crutch) ruse = false;
+        answer.push_back(gde);
         colors[gde] = 'b';
     }
 }
 
 int main() {
-    ifstream fin("cycle.in");
-    ofstream fout("cycle.out");
+    ifstream fin("topsort.in");
+    ofstream fout("topsort.out");
     int n, m, a, b;
     fin >> n >> m;
 
@@ -57,13 +54,13 @@ int main() {
         }
     }
     for (int i = 1; i <= n; i++) {
-       if (colors[i] == 'w') search(i);
+        if (colors[i] == 'w') search(i);
     }
 
-    if (crutch == -1) {
-        fout << "NO";
+    if (ruse) {
+        fout << -1;
     } else {
-        fout << "YES" << endl;
+        reverse(answer.begin(), answer.end());
         for (auto q: answer) {
             fout << q << ' ';
         }
