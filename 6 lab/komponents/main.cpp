@@ -24,8 +24,8 @@ void search(int curr) {
         if (graph[temp->kuda]->color == "white") {
             //graph[temp->kuda]->color = "grey";
             bfs.push(temp->kuda);
-            temp = temp->next;
-        } else break;
+        }
+        temp = temp->next;
     }
     graph[curr]->color = "black";
     answer[curr] = qcount;
