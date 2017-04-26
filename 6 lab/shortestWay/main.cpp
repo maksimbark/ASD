@@ -9,43 +9,37 @@ struct listik {
 
 struct node {
     listik *cat;
-    string color;
+    char color;
+    int time;
 };
 
-int qcount = 1;
-vector<int> answer(30001);
 vector<node *> graph(30001);
 queue<int> bfs;
 
 void search(int curr) {
-    graph[curr]->color = "grey";
     listik *temp = graph[curr]->cat;
     while (temp) {
-        if (graph[temp->kuda]->color == "white") {
-            if (!answer[temp->kuda]) {
-                answer[temp->kuda] = qcount;
-            }
+        if (graph[temp->kuda]->color == 'w') {
+            graph[temp->kuda]->time = graph[curr]->time + 1;
+            graph[temp->kuda]->color = 'g';
             bfs.push(temp->kuda);
-            temp = temp->next;
-        } else break;
+        }
+        temp = temp->next;
     }
-    graph[curr]->color = "black";
-    qcount++;
     bfs.pop();
-    if (bfs.size() > 0) {
-        search(bfs.front());
-    }
 }
 
 int main() {
     ifstream fin("pathbge1.in");
     ofstream fout("pathbge1.out");
+    ios_base::sync_with_stdio(0);
+    fin.tie(0);
     int size, count;
     int from, where;
     fin >> size >> count;
     for (int i = 1; i <= size; i++) {
         node *temp = new(node);
-        temp->color = "white";
+        temp->color = 'w';
         temp->cat = NULL;
         graph[i] = temp;
     }
@@ -84,14 +78,17 @@ int main() {
             add->next = NULL;
             temp->next = add;
         }
-
     }
 
     fout << 0 << " ";
     bfs.push(1);
-    search(1);
+    graph[1]->time = 0;
+    graph[1]->color = 'g';
+    while (bfs.size() > 0) {
+        search(bfs.front());
+    }
     for (int i = 2; i <= size; i++) {
-        fout << answer[i] << " ";
+        fout << graph[i]->time << " ";
     }
     return 0;
 }
