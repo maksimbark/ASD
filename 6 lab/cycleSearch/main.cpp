@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-//be careful, it's WA version!
+
 using namespace std;
 
 vector<vector<int>> myGraph(100001);
