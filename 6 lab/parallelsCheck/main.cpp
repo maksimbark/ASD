@@ -9,7 +9,6 @@ int main() {
     int n, m;
     fin >> size >> count;
     vector<vector<int>> matrix(size + 1, vector<int>(size + 1));
-
     for (int i = 0; i < count; i++) {
         fin >> n >> m;
         matrix[n][m]++;
