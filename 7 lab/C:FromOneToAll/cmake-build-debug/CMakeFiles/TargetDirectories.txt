@@ -1,0 +1,3 @@
+/Users/maksimbarkalov/Documents/C_Projects/ASD/7 lab/C:FromOneToAll/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/maksimbarkalov/Documents/C_Projects/ASD/7 lab/C:FromOneToAll/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maksimbarkalov/Documents/C_Projects/ASD/7 lab/C:FromOneToAll/cmake-build-debug/CMakeFiles/C_FromOneToAll.dir
