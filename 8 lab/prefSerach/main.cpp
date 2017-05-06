@@ -8,7 +8,7 @@ int main() {
     string my;
     int i = 1, j = 0;
     fin >> my;
-    vector<int> p(my.length());
+    vector<int> p(my.length() + 1);
 
     while (i < my.length()) {
         if (my[i] == my[j]) {
