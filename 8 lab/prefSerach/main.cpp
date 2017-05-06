@@ -19,7 +19,6 @@ int main() {
             if (j > 0)
                 j = p[j];
             else {
-                p.push_back(0);
                 ++i;
             }
 
